@@ -1,0 +1,21 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.error-404 {
+	@include m.contenedor;
+
+	&__contenedor {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__descripcion {
+		font-size: 2.4rem;
+	}
+
+	&__enlace {
+		@include m.enlace;
+		color: v.$azul;
+	}
+}

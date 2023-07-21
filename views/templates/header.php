@@ -1,8 +1,20 @@
 <header class="header">
   <div class="header__contenedor">
     <nav class="header__navegacion">
-      <a href="/registro" class="header__enlace">Registro</a>
-      <a href="/login" class="header__enlace">Iniciar sesión</a>
+      <?php if ($auth) { ?>
+
+        <a href="<?php echo $admin ? '/admin/dashboard' : '/finalizar-registro' ?>" class="header__enlace">Administrar</a>
+
+        <form action="/logout" method="POST" class="header__form">
+          <input type="submit" value="Cerrar Sesión" class="header__submit">
+        </form>
+
+      <?php } else { ?>
+
+        <a href="/registro" class="header__enlace">Registro</a>
+        <a href="/login" class="header__enlace">Iniciar sesión</a>
+
+      <?php } ?>
     </nav>
 
     <div class="header__contenido">
@@ -23,15 +35,26 @@
 <div class="barra">
   <div class="barra__contenido">
 
-    <a class="barra__logo" href="/">
-      <h2>&#60;DevWebCamp/></h2>
-    </a>
+    <div class="barra__logo-contenedor">
+      <a class="barra__logo" href="/">
+        <h2>&#60;DevWebCamp/></h2>
+      </a>
+
+      <div class="barra__colapsar" title="Colapsar Menu">
+        <i class="fa-solid fa-chevron-up"></i>
+      </div>
+    </div>
 
     <nav class="navegacion">
-      <a href="/devwebcamp" class="navegacion__enlace">Eventos</a>
-      <a href="/paquetes" class="navegacion__enlace">Paquetes</a>
-      <a href="/workshops-conferencias" class="navegacion__enlace">Workshops / Conferencias</a>
-      <a href="/registro" class="navegacion__enlace">Comprar Pase</a>
+      <a href="/devwebcamp" class="navegacion__enlace <?php echo pagina_actual('/devwebcamp') ? 'navegacion__enlace--seleccionado' : ''; ?>">Eventos</a>
+
+      <a href="/paquetes" class="navegacion__enlace <?php echo pagina_actual('/paquetes') ? 'navegacion__enlace--seleccionado' : ''; ?>">Paquetes</a>
+
+      <a href="/workshops-conferencias" class="navegacion__enlace <?php echo pagina_actual('/workshops-conferencias') ? 'navegacion__enlace--seleccionado' : ''; ?>">Workshops / Conferencias</a>
+
+      <a href="/registro" class="navegacion__enlace <?php echo pagina_actual('/registro') ? 'navegacion__enlace--seleccionado' : ''; ?>">Comprar Pase</a>
     </nav>
+
+
   </div>
 </div>

@@ -2,26 +2,38 @@
 @use 'base/mixins' as m;
 
 .navegacion {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
-  @include m.desktop {
-    flex-direction: row;
+	display: flex;
+	flex-direction: column;
+  overflow: hidden;
+  transition: max-height .5s ease-in;
+  max-height: 50rem;
+
+  &--colapsada {
+    max-height: 0;
   }
 
-  &__enlace {
-    color: v.$blanco;
-    font-size: 2.2rem;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    text-align: center;
+	@include m.desktop {
+		margin-left: 2rem;
+		flex-direction: row;
+	}
 
-    &:hover {
-      background-color: v.$blanco;
-      color: v.$azul;
-    }
-  }
+	&__enlace {
+		color: v.$blanco;
+		font-size: 2.2rem;
+		padding: 2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-transform: uppercase;
+		text-align: center;
+
+		&:hover,
+		&--seleccionado {
+			box-shadow: 0px 8px 11px -9px rgb(0 0 0 / 75%) inset;
+			-webkit-box-shadow: 0px 8px 11px -9px rgb(0 0 0 / 75%) inset;
+			-moz-box-shadow: 0px 8px 11px -9px rgb(0 0 0 / 75%) inset;
+			background-color: v.$blanco;
+			color: v.$azul;
+		}
+	}
 }

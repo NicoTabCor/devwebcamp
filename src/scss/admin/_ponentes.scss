@@ -1,0 +1,33 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.listado-ponentes {
+	@include m.reset-lista;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(35rem, auto));
+	grid-gap: 10px;
+	width: 100%;
+
+
+	&__ponente {
+		color: v.$azul;
+		border: 1px solid v.$azul;
+		border-radius: 1rem;
+		padding: 1rem;
+		text-align: center;
+    display: flex;
+    justify-self: center;
+    width: fit-content;
+
+		&:hover {
+			background-color: v.$azul;
+			color: v.$blanco;
+		}
+
+		&--seleccionado {
+			@extend .listado-ponentes__ponente;
+			background-color: v.$azul;
+			color: v.$blanco;
+		}
+	}
+}

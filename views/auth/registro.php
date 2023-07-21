@@ -66,6 +66,10 @@
       >
     </div> 
 
+    <div class="formulario__campo">
+      <div class="g-recaptcha" data-sitekey="6LeGqtQjAAAAABcBwudebn9hfAxtvqWGs4tSGEHv"></div>
+    </div>
+
     <input type="submit" class="formulario__submit" value="Crear Cuenta">
   </form>
 
@@ -75,3 +79,7 @@
     
   </div>
 </main>
+
+<?php 
+  $script = '<script src="https://www.google.com/recaptcha/api.js" async defer></script>';
+?>

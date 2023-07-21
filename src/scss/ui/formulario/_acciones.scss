@@ -1,17 +1,21 @@
 @use 'base/variables' as v;
 
 .acciones {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: space-between;
+	margin-top: 3rem;
+	display: flex;
+	justify-content: space-between;
 
-  &__enlace {
-    color: v.$azul;
-    font-weight: v.$delgada;
-    transition: color .2s ease;
+	&__enlace {
+		color: v.$azul;
+		font-weight: v.$delgada;
+		transition: color 0.2s ease;
 
-    &:hover {
-      color: darken( v.$azul, 25% );
-    } 
-  }
+		&:hover {
+			color: darken(v.$azul, 25%);
+		}
+	}
+
+	&--centrar {
+		justify-content: center;
+	}
 }

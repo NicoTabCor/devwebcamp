@@ -1,0 +1,50 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.speakers {
+  overflow: hidden;
+	&__grid {
+		@include m.grid-auto(35rem, 2rem);
+		@include m.contenedor;
+	}
+}
+
+.speaker {
+	@include m.card;
+
+	@for $i from 1 through 4 {
+		&:nth-of-type(4n + #{$i}) {
+			& .speaker__imagen {
+				background-image: url(../img/bg_#{$i}.png);
+				background-image: -webkit-image-set(
+					/*url(../img/bg_#{$i}.avif) 1x, NO FUNCIONA EN EDGE*/
+					url(../img/bg_#{$i}.webp) 1x,
+					url(../img/bg_#{$i}.png) 1x
+				);
+			}
+		}
+	}
+
+	&__imagen {
+		background-size: 85%;
+		background-repeat: no-repeat;
+		background-position: center top;
+	}
+
+	&__nombre {
+		font-size: 2rem;
+		font-weight: v.$black;
+	}
+
+	&__ubicacion {
+		color: v.$gris;
+	}
+}
+
+.speaker-redes {
+	@include m.menu-social(v.$negro, 3rem);
+	display: flex;
+	margin: 2rem 0;
+	gap: 2rem;
+	line-height: 1;
+}

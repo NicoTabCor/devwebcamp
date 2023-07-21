@@ -1,0 +1,129 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.eventos-registro {
+	@include m.contenedor;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	@include m.tablet {
+		flex-direction: row;
+	}
+
+	&__listado {
+		flex-direction: column;
+		@include m.tablet {
+			flex: 0 0 60%;
+		}
+	}
+
+	&__grid {
+		@include m.grid(1, 3rem);
+
+		@include m.tablet {
+			@include m.grid(2, 3rem);
+		}
+	}
+
+	&__heading {
+		&--conferencias,
+		&--workshops {
+			@include m.texto-fluido(2rem, 4rem);
+			margin: 0;
+		}
+
+		&--conferencias {
+			color: v.$azul;
+		}
+
+		&--workshops {
+			color: v.$secundario;
+			margin: 5rem 0 0 0;
+		}
+	}
+
+	&__fecha {
+		text-transform: uppercase;
+		margin: 3rem 0 0 0;
+	}
+}
+
+.registro {
+	background-color: v.$gris-claro;
+	padding: 3rem;
+	border-radius: 1rem;
+	align-self: flex-start;
+
+	@include m.tablet {
+		flex: 0 0 40%;
+		&--seleccion {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 5rem;
+		}
+	}
+
+	&__heading {
+	}
+
+	&__evento {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem;
+		border-radius: 0.3rem;
+
+
+		&:nth-child(odd) {
+			background-color: lighten(v.$gris-oscuro, 75%);
+		}
+	}
+
+	&__nombre {
+		font-size: 2rem;
+		font-weight: v.$bold;
+    margin: 0;
+	}
+
+	&__eliminar {
+		all: unset;
+		color: v.$rojo;
+
+		&:hover {
+			color: lighten(v.$rojo, 12%);
+		}
+	}
+
+  &__texto {
+    text-align: center;
+    font-size: 2.1rem;
+    font-style: italic;
+    color: v.$rojo;
+  }
+
+  &__regalo {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+  }
+
+  &__label {
+    font-size: 2.3rem;
+    font-weight: v.$bold;
+  }
+
+  &__select {
+    font-style: italic;
+    padding: .7rem;
+    width: 100%;
+    border: 1px solid lighten(v.$gris-oscuro, 60%);
+    border-radius: .7rem;
+    text-align: center;
+    background-color: v.$blanco;
+  }
+}

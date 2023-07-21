@@ -1,1 +1,11 @@
-
+import './sidebar.js';
+import './eventos.js';
+import './ponentes.js';
+import './tags.js';
+import './imagen.js';
+import './slider.js';
+import './mapa.js';
+import './animacion-contenido.js';
+import './navegacion.js';
+import './registro.js';
+import './regalos.js';

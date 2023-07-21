@@ -1,0 +1,229 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.dashboard {
+	display: none; // app.js agrega el flex
+	flex-direction: column;
+	background-color: v.$gris-claro;
+	height: 100%;
+
+	&__header {
+		background-color: v.$gris-oscuro;
+		padding: 2rem;
+	}
+
+	&__header-grid {
+		display: flex;
+		flex-direction: column;
+		align-items: center !important;
+		@include m.tablet {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	&__logo {
+		@include m.logo;
+		@include m.texto-fluido(2rem, 4rem);
+	}
+
+	&__form {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__submit--logout {
+		@include m.enlace;
+	}
+
+	&__grid {
+		display: flex;
+		flex-basis: calc(100%) !important;
+		flex-direction: column;
+		overflow-y: auto;
+		@include m.tablet {
+			flex-direction: row;
+		}
+	}
+
+	&__sidebar {
+		background-color: lighten(v.$gris-oscuro, 10%);
+		display: flex;
+		flex-direction: column;
+		@include m.tablet {
+			flex-direction: row;
+		}
+
+		&--cerrado {
+			.dashboard__menu {
+				padding: 0;
+				height: 0;
+
+				@include m.tablet {
+					width: 0;
+					height: auto;
+				}
+			}
+			.dashboard__colapsador {
+				background-color: v.$rojo;
+			}
+		}
+	}
+
+	&__menu {
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		overflow: hidden;
+		height: 12rem;
+		gap: 1rem;
+		@include m.tablet {
+			height: auto;
+			width: 12rem;
+			flex-direction: column;
+			justify-content: unset;
+		}
+	}
+
+	&__colapsador {
+		height: 3rem;
+		background-color: silver;
+		background: linear-gradient(to right, rgb(38, 37, 39), transparent) silver;
+		transition: background-color 1s ease;
+		cursor: pointer;
+
+		@include m.tablet {
+			width: 1.4rem;
+			height: auto;
+			background: linear-gradient(to bottom, rgb(38, 37, 39), transparent)
+				silver;
+		}
+
+		&:hover {
+			background-color: v.$rojo;
+		}
+
+		&::after {
+			@include m.tablet {
+				all: unset;
+			}
+			content: '\f07d';
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			color: v.$blanco;
+			font-size: 2rem;
+			-webkit-font-smoothing: antialiased;
+			font-family: 'Font Awesome 6 free';
+			font-weight: 900;
+		}
+	}
+
+	&__enlace {
+		color: lighten(v.$gris-oscuro, 60%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		border-radius: 50%;
+		width: 8rem;
+		height: 8rem;
+		transition: all 0.3s ease;
+
+		@include m.tablet {
+			width: 9rem;
+			height: 9rem;
+		}
+
+		&:hover,
+		&--seleccionado {
+			// background-color: v.$gris-oscuro;
+			color: v.$blanco;
+		}
+	}
+
+	&__icono {
+		font-size: 2rem;
+	}
+
+	&__menu-texto {
+		font-size: 0.9rem;
+
+		@include m.tablet {
+			font-size: 1.1rem;
+		}
+		text-transform: uppercase;
+		font-weight: v.$bold;
+	}
+
+	&__contenido {
+		flex: 1;
+		padding: 1rem 1rem 3rem 1rem;
+		overflow-y: scroll !important;
+		@include m.tablet {
+			padding: 1rem 3rem 3rem 3rem;
+		}
+	}
+
+	&__heading {
+		text-align: center;
+		word-break: break-word;
+    margin: 3rem 0;
+	}
+
+	&__contenedor-boton {
+		margin-bottom: 3rem;
+
+		@include m.tablet {
+			display: flex;
+			justify-content: flex-end;
+		}
+	}
+
+	&__boton {
+		@include m.boton(v.$azul, v.$blanco);
+		text-transform: uppercase;
+		font-size: 1.4rem;
+		@include m.tablet {
+			width: auto;
+		}
+	}
+
+	&__contenedor {
+		@include m.shadow;
+		margin: 0 auto;
+		background-color: v.$blanco;
+		padding: 2rem;
+		border-radius: 1rem;
+		overflow: auto;
+	}
+
+	&__formulario {
+		@extend .dashboard__contenedor;
+		@include m.contenedor-md;
+	}
+
+	&__grafica {
+		@include m.contenedor-sm;
+	}
+
+	canvas {
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
